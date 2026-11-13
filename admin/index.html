@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#070707">
 <title>DA’POR Admin Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -11,7 +12,7 @@
 :root{--black:#070707;--ink:#11100e;--ivory:#f1eadf;--paper:#f8f3e9;--card:#fbf8f2;--gold:#bd8a2a;--gold2:#e1bd68;--goldd:#87611c;--line:rgba(20,18,14,.13);--muted:#6f685d;--serif:"Cormorant Garamond",Georgia,serif;--sans:"Manrope",Arial,sans-serif;--green:#2f7a4b;--red:#a8322a;--blue:#2c5d8a;--amber:#b0761a}
 *{box-sizing:border-box}html,body{margin:0;height:100%}body{background:var(--ivory);color:var(--ink);font-family:var(--sans);font-size:14px;font-variant-numeric:tabular-nums lining-nums}
 button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}a{color:inherit}
-.app{display:grid;grid-template-columns:248px 1fr;min-height:100vh}
+.app{display:grid;grid-template-columns:248px minmax(0,1fr);min-height:100vh}
 /* sidebar */
 .side{background:var(--black);color:#d8d3c9;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;border-right:1px solid #1f1a12}
 .side .logo{display:flex;align-items:center;gap:12px;padding:22px 22px 20px;border-bottom:1px solid #1d1912}
@@ -269,6 +270,100 @@ textarea.export{width:100%;height:260px;font-family:ui-monospace,Menlo,monospace
 .w-copy{grid-column:1/-1;border-top:1px solid #30291f;padding-top:2.4cqw;display:flex;justify-content:space-between;gap:2cqw;flex-wrap:wrap;font-size:max(8px,.9cqw);color:#6f6960}
 .pd-sec{margin-top:6px;padding-top:16px;border-top:1px solid var(--line)}
 @media(max-width:1100px){.web{grid-template-columns:1fr}.editor{position:static;max-height:none}}
+
+/* mini order dashboard */
+.omini{background:#0a0a09;color:#e9e3d8;border:1px solid #2c261c;padding:14px 16px;margin-bottom:22px}
+.mini-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.omini .eyebrow{color:var(--gold2)}
+.omini .btn.ghost{color:var(--gold2)}.omini .btn.ghost:hover{background:#1c1811;color:#fff}
+.mini-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.mt{background:#15120d;border:1px solid #2c261c;color:#e9e3d8;padding:10px 12px;text-align:left;display:flex;flex-direction:column;gap:2px;transition:.2s}
+.mt:hover{border-color:var(--gold)}
+.mt b{font-size:19px;font-weight:700;letter-spacing:-.01em}
+.mt span{font-size:9.5px;text-transform:uppercase;letter-spacing:.13em;color:#a39c90;font-weight:700}
+.mt.hot{border-color:var(--gold);background:linear-gradient(110deg,#2a2112,#15120d)}.mt.hot b{color:var(--gold2)}
+.mini-list{display:flex;flex-direction:column;margin-top:10px;border-top:1px solid #2c261c}
+.ml{display:flex;align-items:center;gap:12px;background:transparent;border:0;border-bottom:1px solid #1f1b14;color:#e9e3d8;padding:9px 2px;text-align:left;font-size:13px}
+.ml:last-child{border:0}.ml:hover{background:#15120d}
+.ml .ml-n{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ml .mono{color:var(--gold2)}
+.show-sm{display:none}
+.wtabs{display:none}
+/* order tracking */
+.kpis-sm .kpi{padding:14px 16px}.kpis-sm .kpi .v{font-size:22px;margin-top:6px}
+.pipe{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}
+.pp{position:relative;background:var(--card);border:1px solid #d9d0c2;padding:14px 16px;text-align:left;display:flex;flex-direction:column;gap:2px;transition:.2s}
+.pp:hover{border-color:var(--gold)}
+.pp.active{background:var(--ink);color:#fff;border-color:var(--ink)}.pp.active .pp-l{color:var(--gold2)}
+.pp-n{font-size:22px;font-weight:700}.pp-l{font-size:9.5px;text-transform:uppercase;letter-spacing:.14em;font-weight:700;color:var(--muted)}
+.pp em{position:absolute;right:-12px;top:50%;transform:translateY(-50%);z-index:2;font-style:normal;color:#b9ad97;font-size:20px}
+.note{display:flex;gap:12px;align-items:center;background:#0a0a09;color:#e9e3d8;border:1px solid #2c261c;padding:12px 16px;margin-bottom:14px;font-size:13px;line-height:1.5}
+.note .btn{border-color:#4a4132;color:#e9e3d8;margin-left:auto}.note .btn:hover{background:#e9e3d8;color:#0a0a09}
+.otools{margin-bottom:14px;justify-content:space-between}
+.osearch{width:320px;max-width:100%}
+.prog{display:flex;gap:3px;margin-top:7px}.prog i{flex:1;height:4px;background:#e4dccf;border-radius:2px}.prog i.on{background:var(--gold)}
+.prog.cancel i{background:#e2a9a2}
+.ocards{display:none}
+.oc{background:var(--card);border:1px solid #d9d0c2;padding:14px;margin-bottom:10px;cursor:pointer}
+.oc-t{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.oc-m{display:flex;gap:12px;align-items:center}
+.oc-im{display:flex}.oc-im img{width:38px;height:46px;object-fit:cover;background:#0b0b0a;border:2px solid var(--card);margin-left:-10px}.oc-im img:first-child{margin-left:0}
+.oc .prog{margin-top:12px}
+.oc-btn{width:100%;justify-content:center;margin-top:12px}
+/* bottom nav (mobile) */
+.bnav{display:none}
+@media(max-width:1100px){
+  .web{grid-template-columns:1fr}.editor{position:static;max-height:none;overflow:visible}
+  .wtabs{display:flex;gap:0;margin-bottom:12px;border:1px solid var(--ink)}
+  .wtabs button{flex:1;height:40px;border:0;background:transparent;text-transform:uppercase;font-size:10.5px;font-weight:800;letter-spacing:.12em}
+  .wtabs button.active{background:var(--ink);color:#fff}
+  .web.tab-edit .site{display:none}.web.tab-preview .editor{display:none}
+}
+@media(max-width:820px){
+  .app{grid-template-columns:minmax(0,1fr)!important}main,#view,.otools,.otools>*{min-width:0;max-width:100%}
+  body{font-size:13.5px}
+  .demo-note{font-size:8px;letter-spacing:.08em;padding:5px 10px;line-height:1.4}
+  .top{height:56px;padding:0 14px;gap:10px;top:0}
+  .top h1{font-size:21px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  #topAction{height:34px;padding:0 12px;font-size:9.5px}
+  .menu-btn{font-size:22px;padding:0;width:28px}
+  .content{padding:16px 12px 96px}
+  h2.sec{font-size:24px}
+  .panel{padding:14px}
+  .kpis{grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+  .kpi{padding:12px 14px}.kpi .v,.kpis-sm .kpi .v{font-size:19px;margin-top:5px}.kpi label{font-size:8.5px}.kpi .d{font-size:10.5px}
+  .omini{padding:12px;margin:-4px -2px 18px}
+  .mini-tiles{grid-template-columns:repeat(4,1fr);gap:6px}
+  .mt{padding:8px}.mt b{font-size:16px}.mt span{font-size:8px;letter-spacing:.08em}
+  .ml{font-size:12px;gap:8px}.ml .chip{display:none}
+  .hide-sm{display:none!important}.show-sm{display:inline}
+  .pipe{grid-template-columns:repeat(4,1fr);gap:6px}
+  .pp{padding:10px 8px}.pp-n{font-size:17px}.pp-l{font-size:7.5px;letter-spacing:.06em}.pp em{display:none}
+  .note{flex-wrap:wrap;font-size:12px}.note .btn{margin-left:0}
+  .otools{flex-direction:column;align-items:stretch}.osearch{width:100%;display:flex}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;margin-left:-12px;margin-right:-12px;padding:0 12px 4px;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}
+  .tabs button{flex:none}
+  .otable{display:none}.ocards{display:block}
+  .pgrid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .pcard h3{font-size:17px}.pcard .info{padding:10px 10px 12px}.pcard .acts{flex-wrap:wrap}.pcard .acts .btn{padding:0 6px;font-size:8.5px}
+  .pcard .im .badge{font-size:7.5px;padding:4px 6px;top:8px;left:8px}
+  .dgrid{grid-template-columns:1fr}
+  .drawer{width:100%}
+  .dh{padding:16px 16px}.dh h2{font-size:24px}.db{padding:16px}.df{padding:12px 16px calc(12px + env(safe-area-inset-bottom));flex-wrap:wrap}
+  .df .btn{flex:1;justify-content:center}.df span[style*="flex:1"]{display:none}
+  .f input,.f select,.f textarea,.subbox input,.lrow input,.search input{font-size:16px}
+  .tl .s{font-size:8px}
+  .acc-h{padding:14px}
+  .bnav{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:65;background:#070707;border-top:1px solid #2c261c;padding:6px 4px calc(6px + env(safe-area-inset-bottom))}
+  .bnav button{flex:1;position:relative;border:0;background:transparent;color:#9b9488;display:flex;flex-direction:column;align-items:center;gap:3px;padding:4px 0;font-size:9px;letter-spacing:.06em;text-transform:uppercase;font-weight:700}
+  .bnav svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.6}
+  .bnav button.active{color:var(--gold2)}
+  .bnav i{position:absolute;top:0;left:calc(50% + 6px);background:#a8322a;color:#fff;font-style:normal;font-size:9px;border-radius:999px;padding:1px 5px;letter-spacing:0}
+  .toasts{bottom:84px}
+  .side{z-index:75}.ov{z-index:68}.drawer{z-index:72}.confirm{z-index:85}
+  table td,table th{padding:10px 8px}
+  .confirm{padding:20px}
+  .saletbl td:nth-child(3){display:none}.saletbl td:last-child{white-space:nowrap}.saletbl .tname{font-size:14px!important}
+}
 </style>
 </head>
 <body>
@@ -281,7 +376,7 @@ textarea.export{width:100%;height:260px;font-family:ui-monospace,Menlo,monospace
   <main>
     <div class="demo-note">Preview mode · changes save in this browser · orders shown are samples until the store is connected</div>
     <div class="top">
-      <button class="menu-btn" onclick="document.getElementById('side').classList.toggle('open')">☰</button>
+      <button class="menu-btn" onclick="document.getElementById('side').classList.add('open');document.getElementById('ov').classList.add('open')">☰</button>
       <h1 id="title">Overview</h1>
       <div class="sp"></div>
       <label class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="gsearch" placeholder="Search orders, products, codes…"></label>
@@ -293,6 +388,7 @@ textarea.export{width:100%;height:260px;font-family:ui-monospace,Menlo,monospace
 <div class="ov" id="ov"></div>
 <aside class="drawer" id="drawer"></aside>
 <div class="confirm" id="confirm"></div>
+<nav class="bnav" id="bnav"></nav>
 <div class="toasts" id="toasts"></div>
 
 <script>
@@ -432,20 +528,23 @@ const ICONS={
   storefront:'<path d="M3 9 4.5 3h15L21 9M3 9v12h18V9M3 9h18M9 21v-6h6v6"/>',
   settings:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-2.9 1.2V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-2.9-1.2l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.7 1.7 0 0 0 3 14H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.2-2.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1A1.7 1.7 0 0 0 10 3V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 2.9 1.2l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0 1.2 2.9H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>'
 };
-const PAGES=[["overview","Overview"],["orders","Orders"],["products","Products"],["inventory","Inventory"],["discounts","Discounts"],["website","Website Content"],["customers","Customers"],["settings","Settings"]];
-let page="overview", orderFilter="all", prodFilter="all", q="";
+const PAGES=[["website","Website"],["orders","Order Tracking"],["products","Products"],["inventory","Inventory"],["discounts","Discounts"],["customers","Customers"],["settings","Settings"]];
+let page="website", webTab="edit", orderFilter="all", prodFilter="all", q="";
 function renderNav(){
   const newCount=S.orders.filter(o=>o.status==="new").length;
   const oos=S.products.filter(p=>p.status!=="draft"&&(isOOS(p)||isLow(p))).length;
   $("#nav").innerHTML=PAGES.map(([k,l])=>`<button class="${page===k?"active":""}" data-p="${k}"><svg viewBox="0 0 24 24">${ICONS[k]}</svg>${l}${k==="orders"&&newCount?`<span class="pill">${newCount}</span>`:""}${k==="inventory"&&oos?`<span class="pill">${oos}</span>`:""}</button>`).join("");
   $("#nav").querySelectorAll("button").forEach(b=>b.onclick=()=>go(b.dataset.p));
+  $("#bnav").innerHTML=[["website","Website"],["orders","Orders"],["products","Products"],["discounts","Discounts"]].map(([k,l])=>`<button class="${page===k?"active":""}" data-p="${k}"><svg viewBox="0 0 24 24">${ICONS[k]}</svg><span>${l}</span>${k==="orders"&&newCount?`<i>${newCount}</i>`:""}</button>`).join("")+`<button class="${["inventory","customers","settings"].includes(page)?"active":""}" id="bMore"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span>More</span>${oos?`<i>${oos}</i>`:""}</button>`;
+  $("#bnav").querySelectorAll("button[data-p]").forEach(b=>b.onclick=()=>go(b.dataset.p));
+  $("#bMore").onclick=()=>{ $("#side").classList.add("open"); $("#ov").classList.add("open"); };
 }
 function go(p){ page=p; try{history.replaceState(null,"","#"+p);}catch(e){} closeAll(); render(); window.scrollTo(0,0); }
 function render(){
   renderNav();
   $("#title").textContent=PAGES.find(x=>x[0]===page)[1];
   const ta=$("#topAction");
-  const map={products:["+ Add product",()=>editProduct()],discounts:["+ Create code",()=>editDiscount()],orders:["+ Manual order",()=>manualOrder()],inventory:["+ Add product",()=>editProduct()],overview:["+ Add product",()=>editProduct()],customers:["Export",()=>exportData()],website:["Publish changes",()=>publishContent()],settings:["Export data",()=>exportData()]};
+  const map={products:["+ Product",()=>editProduct()],discounts:["+ Code",()=>editDiscount()],orders:["+ Order",()=>manualOrder()],inventory:["+ Product",()=>editProduct()],overview:["+ Add product",()=>editProduct()],customers:["Export",()=>exportData()],website:["Publish",()=>publishContent()],settings:["Export data",()=>exportData()]};
   ta.textContent=map[page][0]; ta.onclick=map[page][1];
   VIEWS[page]();
 }
@@ -475,51 +574,53 @@ function revenueChart(){
 
 /* ---------- views ---------- */
 const VIEWS={};
-VIEWS.overview=()=>{
-  const st=stats(); const ch=st.prevRev?((st.wkRev-st.prevRev)/st.prevRev*100):0;
-  const alerts=S.products.filter(p=>p.status!=="draft"&&(isOOS(p)||isLow(p)));
-  const top={}; S.orders.filter(o=>o.status!=="cancelled").forEach(o=>o.items.forEach(i=>{top[i.pid]=(top[i.pid]||0)+i.qty}));
-  const topList=Object.entries(top).sort((a,b)=>b[1]-a[1]).slice(0,4).map(([id,n])=>[pById(+id),n]).filter(x=>x[0]);
-  const maxTop=topList.length?topList[0][1]:1;
-  $("#view").innerHTML=`
-  <div class="kpis">
-    <div class="kpi dark"><label>Revenue today</label><div class="v" id="kToday">${money0(st.todayRev)}</div><div class="d">${st.today.length} orders today</div></div>
-    <div class="kpi"><label>Revenue · 7 days</label><div class="v">${money0(st.wkRev)}</div><div class="d">${st.prevRev?`<b style="color:${ch>=0?"var(--green)":"var(--red)"}">${ch>=0?"▲":"▼"} ${Math.abs(ch).toFixed(0)}%</b> vs previous week`:"First week of sales"}</div></div>
-    <div class="kpi"><label>Open orders</label><div class="v">${st.open}</div><div class="d">New + processing, need action</div></div>
-    <div class="kpi"><label>Avg. order value</label><div class="v">${money0(st.aov)}</div><div class="d">${st.units} units sold this week</div></div>
-  </div>
-  <div class="grid2">
-    <div class="panel chart"><div class="panel-h"><div><p class="eyebrow">Sales</p><h2 class="sec">Last 14 days</h2></div><div class="legend"><span>● Daily revenue</span></div></div>${revenueChart()}</div>
-    <div class="panel"><div class="panel-h"><div><p class="eyebrow">Orders</p><h2 class="sec">Latest orders</h2></div><button class="btn sm" onclick="go('orders')">View all</button></div>
-      <div class="feed" id="feed">${S.orders.length?S.orders.slice(0,6).map(feedItem).join(""):'<div class="empty"><b>No orders yet</b>Orders from the website will show up here.</div>'}</div></div>
-  </div>
-  <div class="grid2" style="grid-template-columns:1fr 1fr">
-    <div class="panel"><div class="panel-h"><div><p class="eyebrow">Inventory</p><h2 class="sec">Stock alerts</h2></div><button class="btn sm" onclick="go('inventory')">Manage</button></div>
-      ${alerts.length?alerts.map(p=>`<div class="alert"><img class="pimg" style="width:36px;height:44px" src="${p.img}"><div style="flex:1"><div style="font-weight:700">${esc(p.title)}</div><div class="tsub">${isOOS(p)?"All sizes sold out":"Low: "+SIZES.filter(z=>p.stock[z]>0&&p.stock[z]<=S.settings.lowStock).map(z=>z+" ("+p.stock[z]+")").join(", ")}</div></div>${isOOS(p)?'<span class="chip c-oos">Out</span>':'<span class="chip c-low">Low</span>'}<button class="btn sm" onclick="editProduct(${p.id},'stock')">Restock</button></div>`).join(""):'<div class="empty"><b>All stocked up</b>No products are low or out of stock.</div>'}
-    </div>
-    <div class="panel"><div class="panel-h"><div><p class="eyebrow">Performance</p><h2 class="sec">Top sellers</h2></div></div>
-      ${topList.length?'':'<div class="empty"><b>No sales yet</b>Best-selling products will rank here.</div>'}${topList.map(([p,n])=>`<div class="alert"><img class="pimg" style="width:36px;height:44px" src="${p.img}"><div style="flex:1"><div style="font-weight:700">${esc(p.title)}</div><div class="stockbar"><i style="width:${n/maxTop*100}%"></i></div></div><b>${n} sold</b></div>`).join("")}
-    </div>
-  </div>`;
-  $("#feed").querySelectorAll(".it").forEach(el=>el.onclick=()=>openOrder(+el.dataset.id));
-};
+function miniOrders(){
+  const st=stats(), cnt=s=>S.orders.filter(o=>o.status===s).length;
+  const tiles=[["new","New",cnt("new")],["processing","To ship",cnt("processing")],["shipped","In transit",cnt("shipped")],["all","Today",money0(st.todayRev)]];
+  return `<div class="omini"><div class="mini-h"><div><p class="eyebrow" style="margin:0">Orders at a glance</p></div><button class="btn sm ghost" onclick="orderFilter='all';go('orders')">Track orders →</button></div>
+  <div class="mini-tiles">${tiles.map(([k,l,v],i)=>`<button class="mt ${i===0&&v>0?"hot":""}" data-mo="${k}"><b>${v}</b><span>${l}</span></button>`).join("")}</div>
+  ${S.orders.length?`<div class="mini-list">${S.orders.slice(0,3).map(o=>`<button class="ml" data-oid="${o.id}"><span class="mono">#${o.id}</span><span class="ml-n">${esc(o.customer.name)}</span>${oChip(o.status)}<b>${money(o.total)}</b></button>`).join("")}</div>`:""}</div>`;
+}
 function feedItem(o){ const ini=o.customer.name.split(" ").map(x=>x[0]).join(""); return `<div class="it" data-id="${o.id}"><div class="av">${ini}</div><div style="flex:1;min-width:0"><div style="font-weight:700">#${o.id} · ${esc(o.customer.name)}${o.sample?' <span class="chip c-draft" style="padding:2px 7px;font-size:8.5px">Sample</span>':""}</div><div class="tsub">${o.items.reduce((s,i)=>s+i.qty,0)} item(s) · ${ago(o.created)}</div></div><div style="text-align:right"><div style="font-weight:800">${money(o.total)}</div>${oChip(o.status)}</div></div>`; }
 
+let oq="";
+const FLOW=["new","processing","shipped","delivered"];
+function progress(o){ if(o.status==="cancelled") return '<div class="prog cancel"><i style="width:100%"></i></div>'; const i=FLOW.indexOf(o.status); return `<div class="prog">${FLOW.map((s,j)=>`<i class="${j<=i?"on":""}"></i>`).join("")}</div>`; }
+function nextOf(o){ const i=FLOW.indexOf(o.status); return i>=0&&i<3?FLOW[i+1]:null; }
 VIEWS.orders=()=>{
-  const counts={all:S.orders.length}; STATUSES.forEach(s=>counts[s]=S.orders.filter(o=>o.status===s).length);
+  const st=stats(), counts={all:S.orders.length}; STATUSES.forEach(s=>counts[s]=S.orders.filter(o=>o.status===s).length);
   let list=S.orders.filter(o=>orderFilter==="all"||o.status===orderFilter);
-  if(q) list=list.filter(o=>(o.id+" "+o.customer.name+" "+o.customer.email+" "+(o.code||"")+" "+(o.tracking||"")).toLowerCase().includes(q));
+  const qq=(oq||q).toLowerCase();
+  if(qq) list=list.filter(o=>(o.id+" "+o.customer.name+" "+o.customer.email+" "+(o.code||"")+" "+(o.tracking||"")).toLowerCase().includes(qq));
+  const samples=S.orders.some(o=>o.sample);
   $("#view").innerHTML=`
-  <div class="row" style="justify-content:space-between;margin-bottom:14px"><div><p class="eyebrow">Track & fulfil</p><h2 class="sec">Orders</h2></div>${S.orders.some(o=>o.sample)?'<button class="btn sm" onclick="clearSamples()">Remove sample orders</button>':""}</div>
-  ${S.orders.some(o=>o.sample)?'<div class="box" style="display:flex;gap:12px;align-items:center;background:#0a0a09;color:#e9e3d8;border-color:#2c261c"><span class="chip c-new">Preview</span><span style="font-size:13px;line-height:1.5">These are sample orders showing how orders will look. Once the website checkout is connected, real orders appear here automatically and you can track each one from New to Delivered.</span></div>':""}
-  <div class="tabs">${["all",...STATUSES].map(s=>`<button class="${orderFilter===s?"active":""}" data-s="${s}">${s==="all"?"All":STATUS_LABEL[s]}<span>${counts[s]}</span></button>`).join("")}</div>
-  <div class="panel" style="padding:0"><div class="tbl-wrap"><table><thead><tr><th>Order</th><th>Customer</th><th class="hide-sm">Items</th><th>Total</th><th>Status</th><th class="hide-sm">Placed</th><th>Update</th></tr></thead><tbody id="otb">
-  ${list.length?list.map(o=>orderRow(o)).join(""):`<tr><td colspan="7"><div class="empty"><b>No orders yet</b>${S.orders.length?"Try another filter.":"Orders placed on the website will appear here."}</div></td></tr>`}
-  </tbody></table></div></div>`;
-  $("#view").querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{orderFilter=b.dataset.s;render();});
+  <div class="kpis kpis-sm">
+    <div class="kpi dark"><label>Revenue today</label><div class="v">${money0(st.todayRev)}</div><div class="d">${st.today.length} orders</div></div>
+    <div class="kpi"><label>Last 7 days</label><div class="v">${money0(st.wkRev)}</div><div class="d">${st.wk.length} orders</div></div>
+    <div class="kpi"><label>Need action</label><div class="v">${st.open}</div><div class="d">New + to ship</div></div>
+    <div class="kpi"><label>Avg. order</label><div class="v">${money0(st.aov)}</div><div class="d">${st.units} units this week</div></div>
+  </div>
+  <div class="pipe">${FLOW.map((s,i)=>`<button class="pp ${orderFilter===s?"active":""}" data-s="${s}"><span class="pp-n">${counts[s]}</span><span class="pp-l">${["New","Processing","Shipped","Delivered"][i]}</span>${i<3?'<em>›</em>':""}</button>`).join("")}</div>
+  ${samples?'<div class="note"><span class="chip c-new">Preview</span><span>Sample orders show how tracking will look. Real website orders appear here once checkout is connected.</span><button class="btn sm" onclick="clearSamples()">Remove samples</button></div>':""}
+  <div class="row otools"><label class="search osearch"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="oq" placeholder="Order #, name, email or tracking #" value="${esc(oq)}"></label>
+  <div class="tabs" style="margin:0">${["all",...STATUSES].map(s=>`<button class="${orderFilter===s?"active":""}" data-s="${s}">${s==="all"?"All":STATUS_LABEL[s]}<span>${counts[s]}</span></button>`).join("")}</div></div>
+  ${list.length?`
+  <div class="panel otable" style="padding:0"><div class="tbl-wrap"><table><thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>Progress</th><th>Tracking</th><th>Update</th></tr></thead><tbody>${list.map(o=>orderRow(o)).join("")}</tbody></table></div></div>
+  <div class="ocards">${list.map(orderCard).join("")}</div>`
+  :`<div class="panel"><div class="empty"><b>No orders yet</b>${S.orders.length?"Nothing matches this filter.":"Orders placed on the website will appear here."}</div></div>`}
+  <div class="panel chart" style="margin-top:18px"><div class="panel-h"><div><p class="eyebrow">Sales</p><h2 class="sec">Last 14 days</h2></div></div>${revenueChart()}</div>`;
+  $("#view").querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{orderFilter=orderFilter===b.dataset.s&&b.classList.contains("pp")?"all":b.dataset.s;render();});
+  const oi=$("#oq"); oi.oninput=()=>{ oq=oi.value; const pos=oi.selectionStart; render(); const n=$("#oq"); n.focus(); n.setSelectionRange(pos,pos); };
   bindOrderRows();
+  $("#view").querySelectorAll(".oc").forEach(c=>c.onclick=e=>{ if(e.target.closest("[data-next]")) return; openOrder(+c.dataset.id); });
+  $("#view").querySelectorAll("[data-next]").forEach(b=>b.onclick=()=>setStatus(+b.dataset.next,b.dataset.to));
 };
-function orderRow(o,fresh){ return `<tr class="click ${fresh?"flash":""}" data-id="${o.id}"><td><b>#${o.id}</b>${o.sample?'<div class="tsub">Sample</div>':""}${o.code?`<div class="tsub">Code ${esc(o.code)}</div>`:""}</td><td><div style="font-weight:600">${esc(o.customer.name)}</div><div class="tsub">${esc(o.address.split(", ").slice(1,3).join(", "))}</div></td><td class="hide-sm"><div class="row" style="gap:4px">${o.items.slice(0,3).map(i=>`<img class="pimg" style="width:30px;height:36px" src="${i.img}" title="${esc(i.title)} · ${i.size} × ${i.qty}">`).join("")}</div></td><td><b>${money(o.total)}</b></td><td>${oChip(o.status)}</td><td class="hide-sm tsub">${ago(o.created)}</td><td onclick="event.stopPropagation()"><select class="sel" data-o="${o.id}">${STATUSES.map(s=>`<option value="${s}" ${o.status===s?"selected":""}>${STATUS_LABEL[s]}</option>`).join("")}</select></td></tr>`; }
+function orderCard(o){ const n=nextOf(o); return `<div class="oc" data-id="${o.id}">
+  <div class="oc-t"><b>#${o.id}</b>${o.sample?'<span class="tsub">Sample</span>':""}<span style="flex:1"></span>${oChip(o.status)}</div>
+  <div class="oc-m"><div class="oc-im">${o.items.slice(0,3).map(i=>`<img src="${i.img}">`).join("")}</div><div style="flex:1;min-width:0"><div style="font-weight:700">${esc(o.customer.name)}</div><div class="tsub">${o.items.reduce((s,i)=>s+i.qty,0)} item(s) · ${ago(o.created)}</div>${o.tracking?`<div class="tsub mono">${esc(o.carrier||"")} ${esc(o.tracking)}</div>`:""}</div><b>${money(o.total)}</b></div>
+  ${progress(o)}
+  ${n?`<button class="btn sm gold oc-btn" data-next="${o.id}" data-to="${n}">Mark ${STATUS_LABEL[n]}</button>`:""}</div>`; }
+function orderRow(o,fresh){ return `<tr class="click ${fresh?"flash":""}" data-id="${o.id}"><td><b>#${o.id}</b><div class="tsub">${o.sample?"Sample · ":""}${ago(o.created)}</div></td><td><div style="font-weight:600">${esc(o.customer.name)}</div><div class="tsub">${esc(o.address.split(", ").slice(1,3).join(", "))}</div></td><td><div class="row" style="gap:4px;flex-wrap:nowrap">${o.items.slice(0,3).map(i=>`<img class="pimg" style="width:30px;height:36px" src="${i.img}" title="${esc(i.title)} · ${i.size} × ${i.qty}">`).join("")}</div></td><td><b>${money(o.total)}</b></td><td style="min-width:150px">${oChip(o.status)}${progress(o)}</td><td class="tsub mono">${o.tracking?esc((o.carrier||"")+" "+o.tracking):"—"}</td><td onclick="event.stopPropagation()"><select class="sel" data-o="${o.id}">${STATUSES.map(s=>`<option value="${s}" ${o.status===s?"selected":""}>${STATUS_LABEL[s]}</option>`).join("")}</select></td></tr>`; }
 function bindOrderRows(){
   document.querySelectorAll("tr.click").forEach(r=>r.onclick=()=>openOrder(+r.dataset.id));
   document.querySelectorAll("select[data-o]").forEach(s=>s.onchange=()=>setStatus(+s.dataset.o,s.value));
@@ -656,7 +757,7 @@ VIEWS.discounts=()=>{
     <div class="dacts"><span class="tog"><input type="checkbox" data-d="${d.id}" ${d.active?"checked":""}><span></span></span><span style="flex:1"></span><button class="btn sm" onclick="editDiscount('${d.id}')">Edit</button><button class="btn sm" onclick="copyCode('${esc(d.code)}')">Copy</button></div></div>`}).join("")}
     <button class="dcard" style="background:transparent;border:2px dashed #c9bda8;color:#8a7f6c;font-family:var(--serif);font-size:24px;min-height:200px" onclick="editDiscount()">+ Create code</button></div>
   <div class="panel" style="margin-top:22px"><div class="panel-h"><div><p class="eyebrow">Product markdowns</p><h2 class="sec">Items on sale</h2></div><button class="btn sm" onclick="bulkSale()">Bulk sale</button></div>
-  ${sale.length?`<table><tbody>${sale.map(p=>`<tr><td style="width:60px"><img class="pimg" src="${p.img}"></td><td><div class="tname" style="font-size:17px">${esc(p.title)}</div></td><td>${priceHTML(p)}</td><td><span class="chip c-sale">${Math.round((1-p.salePrice/p.price)*100)}% off</span></td><td style="text-align:right"><button class="btn sm" onclick="editProduct(${p.id})">Edit</button> <button class="btn sm ghost" onclick="endSale(${p.id})">End sale</button></td></tr>`).join("")}</tbody></table>`:'<div class="empty"><b>No markdowns</b>Set a sale price on any product, or use Bulk sale.</div>'}</div>`;
+  ${sale.length?`<div class="tbl-wrap"><table class="saletbl"><tbody>${sale.map(p=>`<tr><td style="width:60px"><img class="pimg" src="${p.img}"></td><td><div class="tname" style="font-size:17px">${esc(p.title)}</div></td><td>${priceHTML(p)}</td><td><span class="chip c-sale">${Math.round((1-p.salePrice/p.price)*100)}% off</span></td><td style="text-align:right"><button class="btn sm" onclick="editProduct(${p.id})">Edit</button> <button class="btn sm ghost" onclick="endSale(${p.id})">End sale</button></td></tr>`).join("")}</tbody></table></div>`:'<div class="empty"><b>No markdowns</b>Set a sale price on any product, or use Bulk sale.</div>'}</div>`;
   $("#view").querySelectorAll("input[data-d]").forEach(i=>i.onchange=()=>{const d=S.discounts.find(x=>x.id===i.dataset.d); d.active=i.checked; save(); render(); toast(`Code <b>${esc(d.code)}</b> ${d.active?"activated":"paused"}`);});
 };
 function copyCode(c){ try{navigator.clipboard.writeText(c).then(()=>toast(`Copied <b>${esc(c)}</b>`),()=>toast(`Code: <b>${esc(c)}</b>`));}catch(e){toast(`Code: <b>${esc(c)}</b>`);} }
@@ -797,10 +898,14 @@ function imgPicker(path,v,maxW){
 }
 VIEWS.website=()=>{
   const c=S.content;
-  $("#view").innerHTML=`<div class="row" style="justify-content:space-between;margin-bottom:14px"><div><p class="eyebrow">Click any part of the preview to edit it</p><h2 class="sec">Homepage</h2></div><div class="row"><span class="tsub" id="saved">${c.publishedAt?"Last published "+ago(c.publishedAt):"Not published yet"}</span><button class="btn sm" id="wReset">Reset to original</button></div></div>
-  <div class="web"><div class="editor" id="editor">${SECTIONS.map(s=>`<div class="acc ${openSec===s.k?"open":""}" data-sec="${s.k}"><div class="acc-h"><b>${s.t}</b><span class="tog" title="Show on website"><input type="checkbox" data-show="${s.k}" ${c[s.k].show?"checked":""}><span></span></span><i>${openSec===s.k?"−":"+"}</i></div>${openSec===s.k?`<div class="acc-b">${s.f.map(f=>fieldHTML(s.k,f)).join("")}</div>`:""}</div>`).join("")}</div>
+  $("#view").innerHTML=miniOrders()+`<div class="row" style="justify-content:space-between;margin-bottom:14px"><div><p class="eyebrow"><span class="hide-sm">Click any part of the preview to edit it</span><span class="show-sm">Edit each section · tap Preview to see it</span></p><h2 class="sec">Homepage</h2></div><div class="row"><span class="tsub" id="saved">${c.publishedAt?"Last published "+ago(c.publishedAt):"Not published yet"}</span><button class="btn sm" id="wReset">Reset to original</button></div></div>
+  <div class="wtabs"><button class="${webTab==="edit"?"active":""}" data-wt="edit">Edit sections</button><button class="${webTab==="preview"?"active":""}" data-wt="preview">Preview</button></div>
+  <div class="web tab-${webTab}"><div class="editor" id="editor">${SECTIONS.map(s=>`<div class="acc ${openSec===s.k?"open":""}" data-sec="${s.k}"><div class="acc-h"><b>${s.t}</b><span class="tog" title="Show on website"><input type="checkbox" data-show="${s.k}" ${c[s.k].show?"checked":""}><span></span></span><i>${openSec===s.k?"−":"+"}</i></div>${openSec===s.k?`<div class="acc-b">${s.f.map(f=>fieldHTML(s.k,f)).join("")}</div>`:""}</div>`).join("")}</div>
   <div class="site" id="site">${siteHTML()}</div></div>`;
   const ed=$("#editor");
+  $("#view").querySelectorAll("[data-wt]").forEach(b=>b.onclick=()=>{webTab=b.dataset.wt; render();});
+  $("#view").querySelectorAll("[data-mo]").forEach(b=>b.onclick=()=>{ orderFilter=b.dataset.mo; go("orders"); });
+  $("#view").querySelectorAll("[data-oid]").forEach(b=>b.onclick=()=>openOrder(+b.dataset.oid));
   ed.querySelectorAll(".acc-h").forEach(h=>h.onclick=e=>{ if(e.target.closest(".tog")) return; const k=h.parentElement.dataset.sec; openSec=openSec===k?"":k; render(); });
   ed.querySelectorAll("[data-show]").forEach(i=>i.onchange=()=>{ c[i.dataset.show].show=i.checked; contentChanged(); toast(`${SECTIONS.find(s=>s.k===i.dataset.show).t} ${i.checked?"shown":"hidden"}`); });
   ed.querySelectorAll("[data-c]").forEach(i=>i.oninput=()=>{ setP(c,i.dataset.c,i.dataset.num?Math.max(1,+i.value||1):i.value); contentChanged(true); });
@@ -808,7 +913,7 @@ VIEWS.website=()=>{
   ed.querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{ getP(c,b.dataset.del).splice(+b.dataset.i,1); contentChanged(); render(); });
   ed.querySelectorAll("[data-pick]").forEach(im=>im.onclick=()=>{ setP(c,im.dataset.pick,im.src); contentChanged(); render(); });
   ed.querySelectorAll("[data-img]").forEach(inp=>inp.onchange=()=>{ const f=inp.files[0]; if(!f) return; resizeImg(f,+inp.dataset.w,url=>{ setP(c,inp.dataset.img,url); contentChanged(); render(); toast("Image updated"); }); });
-  $("#site").querySelectorAll("[data-sec]").forEach(el=>el.onclick=e=>{ e.preventDefault(); openSec=el.dataset.sec; render(); const a=document.querySelector(`.acc[data-sec="${openSec}"]`); if(a) a.scrollIntoView({behavior:"smooth",block:"start"}); });
+  $("#site").querySelectorAll("[data-sec]").forEach(el=>el.onclick=e=>{ e.preventDefault(); openSec=el.dataset.sec; webTab="edit"; render(); const a=document.querySelector(`.acc[data-sec="${openSec}"]`); if(a) a.scrollIntoView({behavior:"smooth",block:"start"}); });
   $("#wReset").onclick=()=>confirmBox("Reset website content?","All text, links and images go back to the original homepage.","Reset",()=>{ S.content=defaultContent(); save(); render(); toast("Website content reset"); });
 };
 let cT=null;
